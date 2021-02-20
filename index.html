@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Booking</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!--Header and Menu Section-->
+    <header class="container">
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a class="active" href="#">Sign Up</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!--Booking Section-->
+    <main id="booking" class="main-content container">
+        <div class="booking-form">
+            <h3>Booking Flights</h3>
+            <div class="input-group">
+                <label for=""><b>Flying From</b></label>
+                <input id="flying-from-text" class="inp-style" type="text" name="" placeholder="Dhaka, Bangladesh"
+                    required>
+            </div>
+            <div class="input-group">
+                <label for=""><b>Flying To</b></label>
+                <input id="flying-to-text" class="inp-style" type="text" name="" placeholder="New York, United States"
+                    required>
+            </div>
+            <div class="inputs">
+                <div class="input-group">
+                    <label" for=""><b>Departure</b></label>
+                        <input id="departure-date" class="inp-style" type="date" name="" required>
+                </div>
+                <div class="input-group">
+                    <label for=""><b>Return</b></label>
+                    <input id="return-date" class="inp-style" type="date" name="" required>
+                </div>
+            </div>
+            <div class="input-group f-class">
+                <div>
+                    <label for=""><b>First Class ($150)</b></label>
+                    <input id="f-ticket-count" class="inp-style inp-width" type="number" name="" value="0" required>
+                </div>
+                <div class="plus-minus-btn">
+                    <button class="btn btn-default">
+                        <span onclick="handleTicket('f', true)">
+                            <i class="fas fa-plus">
+                            </i>
+                        </span>
+                    </button>
+
+                    <button class="btn btn-default">
+                        <span onclick="handleTicket('f', false)">
+                            <i class="fas fa-minus">
+                            </i>
+                        </span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="input-group e-class">
+                <div>
+                    <label for=""><b>Economy ($100)</b></label>
+                    <input id="e-ticket-count" class="inp-style inp-width" type="number" name="" value="0">
+                </div>
+                <div class="plus-minus-btn">
+                    <button class="btn btn-default">
+                        <span onclick="handleTicket('e', true)">
+                            <i class="fas fa-plus">
+                            </i>
+                        </span>
+                    </button>
+
+                    <button class="btn btn-default">
+                        <span onclick="handleTicket('e', false)">
+                            <i class="fas fa-minus">
+                            </i>
+                        </span>
+                    </button>
+                </div>
+            </div>
+            <div class="calculations">
+                <div class="amount">
+                    <div class="left">
+                        <p>Subtotal</p>
+                    </div>
+                    <div class="right">
+                        <p>$ <span id="ticket-cost">0</span></p>
+                    </div>
+                </div>
+
+                <div class="amount">
+                    <div class="left">
+                        <p>Charge 10% VAT</p>
+                    </div>
+                    <div class="right">
+                        <p>$ <span id="tax">0</span></p>
+                    </div>
+                </div>
+                <hr>
+                <div class="amount">
+                    <div class="left">
+                        <h4>Total</h4>
+                    </div>
+                    <div class="right">
+                        <p>$ <span id="total">0</span></p>
+                    </div>
+                </div>
+            </div>
+            <button id="submit-btn" type="submit" class="btn-style">Book Now</button>
+        </div>
+    </main>
+
+
+    <div class="booking-content">
+        <h1>discover <br> around the world</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicingelit. Provident voluptatibus quam fuga laborumalias
+            veniam libero autem quasi maxime ullam vero nama imi dolor, architecto ab facilis eaque deserunt nobise
+            voluptatibus quam</p>
+    </div>
+
+    <section id="booked">
+        <div class="container">
+            <div>
+                <h1><i class="fas fa-check-circle"></i></h1>
+                <h1>Congratulations!</h1>
+                <h2>You have Successfully Booked Your Flights</h2>
+                <h4>Here is Your Recipt <br> Please Print out this Recipt</h4>
+            </div>
+            <div class="recipt">
+                <p>Flying From <b><span id="flying-from">Dhaka</span></b></p>
+                <p>Flying To <b><span id="flying-to">New York</span></b></p>
+                <p>Departure at <b><span id="departure">date</span></b></p>
+                <p>Return at <b><span id="return">date</span></b></p>
+                <div class="ticket-container">
+                    <div class="ticket-class">
+                        <div><b>Class</b></div>
+                        <div>First Class</div>
+                        <div>Economy</div>
+                    </div>
+                    <div class="ticket-quantity">
+                        <div><b>Quantity</b></div>
+                        <div id="f-ticket-qty">0</div>
+                        <div id="e-ticket-qty">0</div>
+                    </div>
+                    <div class="ticket-cost">
+                        <div><b>Cost</b></div>
+                        <div>$ <span id="f-ticket-cost">0</span></div>
+                        <div>$ <span id="e-ticket-cost">0</span></div>
+                    </div>
+                </div>
+                <div>
+                    <div class="total-price-details">
+                        <div><b>Sub total</b></div>
+                        <div><b>Vat 10%</b></div>
+                        <div><b>Total</b></div>
+                    </div>
+                    <div class="total-price">
+
+                    </div>
+                    <div>$ <span id="total-price"> 0</span></div>
+                    <div>$ <span id="vat">0</span> </div>
+                    <div>$ <span id="grand-total">0</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--function of the website-->
+    <script src="setting.js"></script>
+
+    <!--Thank You-->
+
+</body>
+
+</html>
